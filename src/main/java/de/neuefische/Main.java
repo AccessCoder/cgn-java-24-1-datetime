@@ -2,6 +2,7 @@ package de.neuefische;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class Main {
 
@@ -35,15 +36,19 @@ public class Main {
 
         //Format der Zeitangabe anpassen
         //d = Tag / M = Monat / y = Jahr / H = Stunde / m = Minute / s = Sekunde / n = Nano
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE dd.MM.yyyy : HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
         String formattedDate = LocalDateTime.now().format(formatter);
         System.out.println("Umgewandelt mit Formatter: " + formattedDate);
+
+        //String in LocalDate umwandeln (Parsen)
+        LocalDate parsedDate = LocalDate.parse("12.08.2024", formatter);
+        System.out.println("Parse String to LocalDate: " + parsedDate);
 
         //Errechnen der Diff. zwischen zwei Zeitpunkten
         LocalDateTime start = LocalDateTime.of(2024,2,12,9,0,0);
         LocalDateTime finish = LocalDateTime.of(2024,2,12,11,0,0);
 
-        long hoursBetween = ChronoUnit.HOURS.between(start, finish);
+//        long hoursBetween = ChronoUnit.HOURS.between(start, finish);
     }
 }
